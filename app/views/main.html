@@ -1,0 +1,50 @@
+<div class="content-items">
+  <h2><img src="../images/logo.jpg"></h2>
+
+    <!-- Todos input -->
+  <ul id="content">
+
+    
+    <li class="box" ng-repeat="item in oferta" ng-hide="item.oferta.referencias == false">
+      <div>
+        
+        <a href="{{item.oferta.url}}" target="_blank"><img ng-src="http://falabella.scene7.com/is/image/FalabellaCO/{{item.oferta.sku}}"></a>
+
+        <div ng-show="item.oferta.descuento" class="descuento">
+          <div>{{item.oferta.descuento}}</div>
+          <div>
+            <span>%</span>
+            DTO.
+          </div>
+          <div><img src="../images/crm-big.jpg"></div>
+          <p>en</p>
+        </div>
+        
+        <a ng-class="{ 'center-title': item.oferta.descuento > 0 }" class="marca" href="{{item.oferta.url}}" target="_blank"><p>{{item.oferta.marca}}</p></a>
+        
+        <p ng-show="item.oferta.mensaje" class="mensaje">{{item.oferta.mensaje}}</p>
+        
+        <a class="descripcion" href="{{item.oferta.url}}" target="_blank"><p>{{item.oferta.descripcion}}</p></a>
+        
+        
+        <p ng-show="item.oferta.precio1" class="precio-descuento-crm"><img src="../images/crm-small.jpg"> {{item.oferta.precio1 | currency : "$" : 0}}</p>
+        
+        <p ng-show="item.oferta.precio2" ng-class="{ 'descuento-inf': item.oferta.precio1 > 0 }" class="precio-descuento"><span ng-show="item.oferta.precio1">Oferta:</span> {{item.oferta.precio2 | currency : "$" : 0}}</p>
+        
+        <p ng-show="item.oferta.precio3" class="precio-normal">Normal: <span>{{item.oferta.precio3 | currency : "$" : 0}}</span></p>  
+        
+        <p class="unidades">{{item.oferta.unidades}} unidades disponibles</p>
+        
+        <p class="desde">Oferta válida desde {{item.oferta.validoDesde | date : format : timezone}} hasta {{item.oferta.validoHasta | date : format : timezone}} y/o <span ng-show="item.oferta.hastaAgotar=true">hasta agotar existencia</span></p>
+        
+        <p class="exclusivo" ng-show="item.oferta.exclusivo=true">Exclusivo Falabella.com</p>
+      
+      </div>
+    </li>
+
+
+  </ul>
+
+  
+
+</div>
